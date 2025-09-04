@@ -9,6 +9,7 @@ const purchaseHistory = [
         price: 1200,
         orderDate: "2025-01-10",
         deliveryDate: "2025-01-15",
+        payment: "Success"
     },
     {
         id: 2,
@@ -19,6 +20,7 @@ const purchaseHistory = [
         price: 500,
         orderDate: "2025-02-01",
         deliveryDate: "2025-02-05",
+        payment: "Pending"
     },
     {
         id: 3,
@@ -29,6 +31,7 @@ const purchaseHistory = [
         price: 25,
         orderDate: "2025-05-20",
         deliveryDate: "2025-05-22",
+        payment: "Success"
     },
     {
         id: 4,
@@ -39,6 +42,7 @@ const purchaseHistory = [
         price: 90,
         orderDate: "2025-06-02",
         deliveryDate: "2025-06-06",
+        payment: "Pending"
     },
     {
         id: 5,
@@ -49,6 +53,7 @@ const purchaseHistory = [
         price: 40,
         orderDate: "2025-07-10",
         deliveryDate: "2025-07-12",
+        payment: "Success"
     },
     {
         id: 6,
@@ -59,6 +64,7 @@ const purchaseHistory = [
         price: 40,
         orderDate: "2025-07-10",
         deliveryDate: "2025-07-12",
+        payment: "Pending"
     },
     {
         id: 7,
@@ -69,6 +75,7 @@ const purchaseHistory = [
         price: 40,
         orderDate: "2025-07-10",
         deliveryDate: "2025-07-12",
+        payment: "Success"
     },
     {
         id: 8,
@@ -79,6 +86,7 @@ const purchaseHistory = [
         price: 40,
         orderDate: "2025-07-10",
         deliveryDate: "2025-07-12",
+        payment: "Success"
     },
     {
         id: 9,
@@ -89,6 +97,7 @@ const purchaseHistory = [
         price: 40,
         orderDate: "2025-07-10",
         deliveryDate: "2025-07-12",
+        payment: "Pending"
     },
     {
         id: 10,
@@ -99,6 +108,7 @@ const purchaseHistory = [
         price: 40,
         orderDate: "2025-07-10",
         deliveryDate: "2025-07-12",
+        payment: "Success"
     },
 
 ];
@@ -132,7 +142,7 @@ const OrderHistory = () => {
                                 Order Date
                             </th>
                             <th className="py-4 px-6 text-center text-gray-700 font-bold text-sm tracking-wider">
-                                Delivery Date
+                                Status
                             </th>
                         </tr>
                     </thead>
@@ -148,10 +158,19 @@ const OrderHistory = () => {
                                 <td className="py-4 px-6 text-center text-gray-600">{item.quantity}</td>
                                 <td className="py-4 px-6 text-center text-gray-600">{item.unit}</td>
                                 <td className="py-4 px-6 text-right text-gray-600">
-                                    {item.price} <span className="text-lg">&#x09F3;</span>
+                                    {item.price} <span className="text-xl">&#x09F3;</span>
                                 </td>
                                 <td className="py-4 px-6 text-center text-gray-600">{item.orderDate}</td>
-                                <td className="py-4 px-6 text-center text-gray-600">{item.deliveryDate}</td>
+                                <td className="py-4 px-6 text-center text-gray-600">
+                                    <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium ${item.payment === "Success"
+                                        ? "bg-green-50 text-green-700 border border-green-200"
+                                        : "bg-yellow-50 text-yellow-700 border border-yellow-200"
+                                        }`}>
+                                        <span className={`w-2 h-2 rounded-full ${item.payment === "Success" ? "bg-green-500" : "bg-yellow-500"
+                                            }`}></span>
+                                        {item.payment}
+                                    </span>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
